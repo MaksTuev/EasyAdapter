@@ -2,18 +2,20 @@
 There is demonstration of simple approach for implementation difficult lists, based on RecyclerView.
 
 You do need call method notify... and extend RecyclerView.Adapter. 
+
 You need only create ItemController for each type of elemets in list and describe order of elemets in Activity/Fragment.
 
-## Example 1 - Six type of elemets:
+A big thanks to ![Surf](http://surfstudio.co/) developers, especially to ![Fedor Atyakshin](https://github.com/revers-back) , for their help in developing.
+
+## Example 1 - Six types of elements:
 ![Example1](main.gif)
 
 Code in activity:
 ```kotlin
  private fun initList() {
-    val linearLayoutManager = LinearLayoutManager(this)
-    val itemAnimator = SlideItemAnimator()
-    recycler.itemAnimator = itemAnimator
-    recycler.layoutManager = linearLayoutManager
+    this.adapter = EasyAdapter()
+    recycler.itemAnimator = SlideItemAnimator()
+    recycler.layoutManager = LinearLayoutManager(this)
     recycler.adapter = adapter
 
     headerController = HeaderController()
@@ -71,7 +73,7 @@ class ElementController(
 }
 ```
 
-## Example 2 - Pagination:
+## Example 2 - Loading data and pagination:
 ![Example1](pagination.gif)
 
 
