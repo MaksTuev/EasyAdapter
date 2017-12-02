@@ -35,8 +35,17 @@ public abstract class BindableItemController<T, H extends BindableViewHolder<T>>
         return getItemHash(item.getData());
     }
 
+    /**
+     * must return unique value
+     * method is used for automatically call notify... methods, see {@link EasyAdapter}
+     * @return item id
+     */
     protected abstract long getItemId(T data);
 
+    /**
+     * method is used for automatically call notify... methods, see {@link EasyAdapter}
+     * @return hash of data
+     */
     protected long getItemHash(T data) {
         return data == null ? 0 : data.hashCode();
     }

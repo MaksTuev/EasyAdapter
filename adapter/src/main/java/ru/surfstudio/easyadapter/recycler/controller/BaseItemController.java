@@ -25,9 +25,20 @@ public abstract class BaseItemController<H extends RecyclerView.ViewHolder, I ex
         return getClass().getCanonicalName().hashCode();
     }
 
+    /**
+     * must return unique value
+     * method is used for automatically call notify... methods, see {@link EasyAdapter}
+     * @param item
+     * @return item id
+     */
     public long getItemId(I item){
         return NO_ID;
     }
 
+    /**
+     * method is used for automatically call notify... methods, see {@link EasyAdapter}
+     * @param item
+     * @return hash of item's data
+     */
     public abstract long getItemHash(I item);
 }

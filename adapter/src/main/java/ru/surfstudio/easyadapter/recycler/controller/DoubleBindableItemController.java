@@ -36,8 +36,17 @@ public abstract class DoubleBindableItemController<T1, T2, H extends DoubleBinda
         return getItemHash(item.getFirstData(), item.getSecondData());
     }
 
+    /**
+     * must return unique value
+     * method is used for automatically call notify... methods, see {@link EasyAdapter}
+     * @return item id
+     */
     protected abstract long getItemId(T1 firstData, T2 secondData);
 
+    /**
+     * method is used for automatically call notify... methods, see {@link EasyAdapter}
+     * @return hash of item's data
+     */
     protected long getItemHash(T1 firstData, T2 secondData) {
         return (firstData == null ? 0 : firstData.hashCode())
                 + (secondData == null ? 0 : secondData.hashCode());

@@ -21,7 +21,7 @@ import ru.surfstudio.easyadapter.recycler.item.NoDataItem;
 
 /**
  * Adapter for RecyclerView with two features:
- * 1) adapter automatically calls necessary method notify... after call {@link #setItems(ItemList)} or {@link #setData(Collection, BindableItemController)}
+ * 1) adapter automatically calls necessary methods notify... after call {@link #setItems(ItemList)} or {@link #setData(Collection, BindableItemController)}
  * 2) adapter provides mechanism for simple configuring complex list with different types of items, see {@link ItemList}
  * <p>
  * You do need subclassing this class in most cases
@@ -63,10 +63,34 @@ public class EasyAdapter extends RecyclerView.Adapter {
         return items.size();
     }
 
+    /**
+     * set data with controller for rendering
+     * adapter automatically calls necessary methods notify... if {@link #autoNotifyOnSetItemsEnabled} sets
+     *
+     * @param data
+     * @param itemController controller for data
+     * @param <T>            type of data
+     */
     public <T> void setData(@NonNull Collection<T> data, @NonNull BindableItemController<T, ? extends RecyclerView.ViewHolder> itemController) {
         setItems(ItemList.create(data, itemController));
     }
 
+    /**
+     * set Items for rendering
+     * adapter automatically calls necessary methods notify... if {@link #autoNotifyOnSetItemsEnabled} sets
+     *
+     * @param items
+     */
+    public void setItems(@NonNull ItemList items) {
+        setItems(items, autoNotifyOnSetItemsEnabled);
+    }
+
+    /**
+     * set Items for rendering
+     *
+     * @param items
+     * @param autoNotify need call {@link #autoNotify()}
+     */
     protected void setItems(@NonNull ItemList items, boolean autoNotify) {
         this.items.clear();
         if (items.isEmpty() || items.get(0) != firstInvisibleItem) {
@@ -79,8 +103,15 @@ public class EasyAdapter extends RecyclerView.Adapter {
         updateSupportedItemControllers(this.items);
     }
 
-    public void setItems(@NonNull ItemList items) {
-        setItems(items, autoNotifyOnSetItemsEnabled);
+    /**
+     * automatically calls necessary methods notify...
+     */
+    public void autoNotify() {
+        final List<ItemInfo> newItemInfo = extractItemInfo();
+        DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(
+                new AutoNotifyDiffCallback(lastItemsInfo, newItemInfo));
+        diffResult.dispatchUpdatesTo(this);
+        lastItemsInfo = newItemInfo;
     }
 
     protected ItemList getItems() {
@@ -104,14 +135,6 @@ public class EasyAdapter extends RecyclerView.Adapter {
     public final long getItemHash(int position) {
         BaseItem item = items.get(position);
         return item.getItemController().getItemHash(item);
-    }
-
-    public void autoNotify() {
-        final List<ItemInfo> newItemInfo = extractItemInfo();
-        DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(
-                new AutoNotifyDiffCallback(lastItemsInfo, newItemInfo));
-        diffResult.dispatchUpdatesTo(this);
-        lastItemsInfo = newItemInfo;
     }
 
     private List<ItemInfo> extractItemInfo() {
