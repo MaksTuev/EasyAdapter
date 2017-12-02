@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/selectable_divider_background"
+    android:elevation="@dimen/card_elevation"
     xmlns:tools="http://schemas.android.com/tools">
 
     <TextView
@@ -32,7 +33,7 @@
         android:layout_marginTop="6dp"
         android:textSize="18dp"
         android:text="ALL"
-        android:textColor="@color/blue"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:background="?attr/selectableItemBackground"

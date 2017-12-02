@@ -1,7 +1,7 @@
 package ru.surfstudio.easyadapter.sample.ui.screen.pagination
 
 import ru.surfstudio.easyadapter.recycler.pagination.PaginationState
-import ru.surfstudio.easyadapter.sample.domain.DataList
+import ru.surfstudio.easyadapter.sample.domain.datalist.DataList
 import ru.surfstudio.easyadapter.sample.domain.Element
 import ru.surfstudio.easyadapter.sample.ui.common.stub.Stub
 import ru.surfstudio.easyadapter.sample.ui.common.stub.generateStubs
@@ -13,31 +13,28 @@ data class PaginationScreenModel(
         val stubs: List<Stub> = generateStubs(10)
 ) {
     fun setNormalPaginationState() {
-        paginationState = when (elements.canGetMore()) {
-            true -> PaginationState.READY
-            false -> PaginationState.COMPLETE
-        }
+        paginationState = if (elements.canGetMore())
+            PaginationState.READY else
+            PaginationState.COMPLETE
+
     }
 
     fun setErrorPaginationState() {
-        paginationState = when (elements.isEmpty()) {
-            true -> PaginationState.COMPLETE
-            false -> PaginationState.ERROR
-        }
+        paginationState = if (elements.isEmpty())
+            PaginationState.COMPLETE else
+            PaginationState.ERROR
     }
 
     fun setNormalLoadState() {
-        loadState = when (elements.isEmpty()) {
-            true -> LoadState.EMPTY
-            false -> LoadState.NONE
-        }
+        loadState = if (elements.isEmpty())
+            LoadState.EMPTY else
+            LoadState.NONE
     }
 
     fun setErrorLoadState() {
-        loadState = when (elements.isEmpty()) {
-            true -> LoadState.ERROR
-            false -> LoadState.NONE
-        }
+        loadState = if (elements.isEmpty())
+            LoadState.ERROR else
+            LoadState.NONE
     }
 
     fun hasData(): Boolean {

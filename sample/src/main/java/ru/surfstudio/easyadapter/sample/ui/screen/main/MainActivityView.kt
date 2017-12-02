@@ -3,7 +3,6 @@ package ru.surfstudio.easyadapter.sample.ui.screen.main
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
-import android.widget.Toast
 import com.agna.ferro.mvp.component.ScreenComponent
 import com.agna.ferro.mvp.presenter.MvpPresenter
 import com.agna.ferro.mvp.view.activity.MvpActivityView
@@ -22,6 +21,9 @@ import ru.surfstudio.easyadapter.sample.ui.screen.main.list.carousel.CarouselCon
 import ru.surfstudio.easyadapter.sample.ui.screen.pagination.PaginationActivityView
 import javax.inject.Inject
 
+/**
+ * example screen with list with different types of items
+ */
 class MainActivityView : MvpActivityView() {
 
     @Inject
@@ -53,15 +55,17 @@ class MainActivityView : MvpActivityView() {
                 onElementClickListener = { openPaginationScreen() },
                 onShowAllClickListener = { openPaginationScreen() })
         deliveryController = DeliveryController(
-                onClickListener = { show("on delivery click") })
+                onClickListener =  { openPaginationScreen() })
         commercialController = CommercialController(
-                onClickListener = { show("on commercial click") })
+                onClickListener =  { openPaginationScreen() })
         elementController = ElementController(
                 onClickListener = { openPaginationScreen() })
         emptyStateController = EmptyStateController()
     }
 
     private fun openPaginationScreen() {
+        //todo handle through presenter
+        //see e.g. https://github.com/MaksTuev/real_mvp_part1/blob/master/app/src/main/java/com/agna/realmvp/realmvpsample/ui/screen/splash/SplashPresenter.java
         startActivity(Intent(this, PaginationActivityView::class.java))
     }
 
@@ -75,10 +79,6 @@ class MainActivityView : MvpActivityView() {
                 .addIf(screenModel.hasBottomCarousel(), screenModel.bottomCarousel, carouselController)
                 .addIf(screenModel.isEmpty(), emptyStateController)
         adapter.setItems(itemList)
-    }
-
-    fun show(text: String) {
-        Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
     }
 
     override fun createScreenComponent(): ScreenComponent<*> = DaggerMainComponent.builder().build()

@@ -1,4 +1,4 @@
-package ru.surfstudio.easyadapter.sample.domain;
+package ru.surfstudio.easyadapter.sample.domain.datalist;
 
 public class IncompatibleRangesException extends IllegalArgumentException {
 

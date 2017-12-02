@@ -1,8 +1,8 @@
 package ru.surfstudio.easyadapter.sample.interactor.element
 
 import com.agna.ferro.mvp.component.scope.PerScreen
-import ru.surfstudio.easyadapter.sample.domain.DataList
 import ru.surfstudio.easyadapter.sample.domain.Element
+import ru.surfstudio.easyadapter.sample.domain.datalist.DataList
 import rx.Observable
 import java.util.*
 import java.util.concurrent.TimeUnit
@@ -21,10 +21,10 @@ class ElementRepository @Inject constructor() {
         val endIndex = if ((startIndex + DEFAULT_PAGE_SIZE) >= Elements.all.size)
             Elements.all.size else
             startIndex + DEFAULT_PAGE_SIZE
-        return Observable.timer(5000, TimeUnit.MILLISECONDS)
-                .flatMap {
-                    /*if (rnd.nextFloat() > 0.5f)
-                        Observable.error(RuntimeException()) else*/
+        return Observable.timer(2500, TimeUnit.MILLISECONDS) //imitate delay
+                .flatMap { _ ->
+                    if (rnd.nextFloat() > 0.5f)
+                        Observable.error(RuntimeException()) else //imitate error
                         Observable.just(
                                 DataList(
                                         Elements.all.subList(startIndex, endIndex),

@@ -1,16 +1,19 @@
 package ru.surfstudio.easyadapter.sample.ui.common.recycler.pagination
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
 import android.support.v7.widget.RecyclerView
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
+import android.view.animation.AccelerateInterpolator
 import android.widget.ProgressBar
 import android.widget.TextView
 import ru.surfstudio.easyadapter.recycler.pagination.BasePaginationableAdapter
 import ru.surfstudio.easyadapter.recycler.pagination.PaginationState
 import ru.surfstudio.easyadapter.sample.R
 
-class PaginationableAdapter<H : RecyclerView.ViewHolder> : BasePaginationableAdapter<H>() {
+class PaginationableAdapter<H : RecyclerView.ViewHolder> : BasePaginationableAdapter() {
 
     private var paginationFooterItemController: BasePaginationFooterController<*>? = null
 
@@ -46,11 +49,11 @@ class PaginationableAdapter<H : RecyclerView.ViewHolder> : BasePaginationableAda
 
             override fun bind(state: PaginationState) {
                 when (state) {
-                    PaginationState.LOADING -> {
+                    PaginationState.READY -> {
                         progressBar.visibility = VISIBLE
                         showMoreTv.visibility = GONE
                     }
-                    PaginationState.COMPLETE, PaginationState.READY -> {
+                    PaginationState.COMPLETE -> {
                         progressBar.visibility = GONE
                         showMoreTv.visibility = GONE
                     }
@@ -63,18 +66,19 @@ class PaginationableAdapter<H : RecyclerView.ViewHolder> : BasePaginationableAda
             }
 
             override fun animateRemove(): Boolean {
-                /*itemView.animate()
+                itemView.animate()
                         .alpha(0f)
                         .setInterpolator(AccelerateInterpolator())
                         .setListener(object : AnimatorListenerAdapter() {
                             override fun onAnimationEnd(animation: Animator?) {
                                 itemView.alpha = 1f
                             }
+
                             override fun onAnimationCancel(animation: Animator?) {
                                 itemView.alpha = 1f
                             }
                         })
-                        .start()*/
+                        .start()
                 return false
             }
 

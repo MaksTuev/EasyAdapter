@@ -7,6 +7,6 @@ import dagger.Component
 
 @PerScreen
 @Component
-interface MainComponent: ScreenComponent<MainActivityView> {
+interface MainComponent : ScreenComponent<MainActivityView> {
     override fun inject(mainActivityView: MainActivityView)
 }

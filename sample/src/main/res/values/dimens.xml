@@ -2,4 +2,5 @@
 <resources>
     <dimen name="standard_margin">16dp</dimen>
     <dimen name="vertical_margin">10dp</dimen>
+    <dimen name="card_elevation">1dp</dimen>
 </resources>

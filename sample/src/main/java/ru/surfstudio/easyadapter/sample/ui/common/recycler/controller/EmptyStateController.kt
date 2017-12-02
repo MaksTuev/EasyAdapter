@@ -6,7 +6,7 @@ import ru.surfstudio.easyadapter.recycler.holder.BaseViewHolder
 import ru.surfstudio.easyadapter.sample.R
 
 
-class EmptyStateController: NoDataItemController<EmptyStateController.Holder>() {
+class EmptyStateController : NoDataItemController<EmptyStateController.Holder>() {
 
     override fun createViewHolder(parent: ViewGroup): Holder = Holder(parent)
 

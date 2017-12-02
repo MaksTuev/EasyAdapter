@@ -4,9 +4,14 @@ import android.support.annotation.LayoutRes;
 import android.view.View;
 import android.view.ViewGroup;
 
+import ru.surfstudio.easyadapter.recycler.controller.BindableItemController;
+
 /**
- * ViewHolder поддерживающий отображение данных
- * @param <T>
+ * ViewHolder with rendering one block of data
+ * Used with {@link BindableItemController}
+ * This holder also has some convenient features, see {@link BaseViewHolder}
+ *
+ * @param <T> data type
  */
 public abstract class BindableViewHolder<T> extends BaseViewHolder {
 

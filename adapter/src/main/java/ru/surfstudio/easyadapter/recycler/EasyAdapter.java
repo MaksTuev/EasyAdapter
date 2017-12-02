@@ -1,6 +1,7 @@
 package ru.surfstudio.easyadapter.recycler;
 
 
+import android.support.annotation.NonNull;
 import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.RecyclerView;
 import android.util.SparseArray;
@@ -18,7 +19,13 @@ import ru.surfstudio.easyadapter.recycler.holder.BaseViewHolder;
 import ru.surfstudio.easyadapter.recycler.item.BaseItem;
 import ru.surfstudio.easyadapter.recycler.item.NoDataItem;
 
-
+/**
+ * Adapter for RecyclerView with two features:
+ * 1) adapter automatically calls necessary method notify... after call {@link #setItems(ItemList)} or {@link #setData(Collection, BindableItemController)}
+ * 2) adapter provides mechanism for simple configuring complex list with different types of items, see {@link ItemList}
+ * <p>
+ * You do need subclassing this class in most cases
+ */
 public class EasyAdapter extends RecyclerView.Adapter {
 
     private List<BaseItem> items = new ArrayList<>();
@@ -33,10 +40,6 @@ public class EasyAdapter extends RecyclerView.Adapter {
 
     public void setAutoNotifyOnSetItemsEnabled(boolean enableAutoNotifyOnSetItems) {
         this.autoNotifyOnSetItemsEnabled = enableAutoNotifyOnSetItems;
-    }
-
-    protected ItemList getItems() {
-        return new ItemList(items);
     }
 
     @Override
@@ -60,11 +63,11 @@ public class EasyAdapter extends RecyclerView.Adapter {
         return items.size();
     }
 
-    public final <T> void setData(Collection<T> data, BindableItemController<T, ? extends RecyclerView.ViewHolder> itemController) {
+    public <T> void setData(@NonNull Collection<T> data, @NonNull BindableItemController<T, ? extends RecyclerView.ViewHolder> itemController) {
         setItems(ItemList.create(data, itemController));
     }
 
-    protected void setItems(ItemList items, boolean autoNotify) {
+    protected void setItems(@NonNull ItemList items, boolean autoNotify) {
         this.items.clear();
         if (items.isEmpty() || items.get(0) != firstInvisibleItem) {
             this.items.add(firstInvisibleItem);
@@ -76,8 +79,12 @@ public class EasyAdapter extends RecyclerView.Adapter {
         updateSupportedItemControllers(this.items);
     }
 
-    public void setItems(ItemList items) {
+    public void setItems(@NonNull ItemList items) {
         setItems(items, autoNotifyOnSetItemsEnabled);
+    }
+
+    protected ItemList getItems() {
+        return new ItemList(items);
     }
 
     private void updateSupportedItemControllers(List<BaseItem> items) {

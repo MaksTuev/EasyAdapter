@@ -7,12 +7,17 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import ru.surfstudio.easyadapter.recycler.controller.BindableItemController;
+import ru.surfstudio.easyadapter.recycler.controller.DoubleBindableItemController;
 import ru.surfstudio.easyadapter.recycler.controller.NoDataItemController;
 import ru.surfstudio.easyadapter.recycler.holder.BindableViewHolder;
 import ru.surfstudio.easyadapter.recycler.item.BaseItem;
 import ru.surfstudio.easyadapter.recycler.item.BindableItem;
+import ru.surfstudio.easyadapter.recycler.item.DoubleBindableItem;
 import ru.surfstudio.easyadapter.recycler.item.NoDataItem;
 
+/**
+ * List of items for RecyclerView, used with {@link EasyAdapter}
+ */
 public class ItemList extends ArrayList<BaseItem> {
 
     public interface BindableItemControllerProvider<T> {
@@ -87,6 +92,21 @@ public class ItemList extends ArrayList<BaseItem> {
         return insertIf(condition, index, new BindableItem<>(data, itemController));
     }
 
+    public <T1, T2> ItemList insert(int index,
+                                    T1 firstData,
+                                    T2 secondData,
+                                    DoubleBindableItemController<T1, T2, ? extends RecyclerView.ViewHolder> itemController) {
+        return insert(index, new DoubleBindableItem<>(firstData, secondData, itemController));
+    }
+
+    public <T1, T2> ItemList insertIf(boolean condition,
+                                      int index,
+                                      T1 firstData,
+                                      T2 secondData,
+                                      DoubleBindableItemController<T1, T2, ? extends RecyclerView.ViewHolder> itemController) {
+        return insertIf(condition, index, new DoubleBindableItem<>(firstData, secondData, itemController));
+    }
+
     public ItemList insert(int index,
                            NoDataItemController<? extends RecyclerView.ViewHolder> itemController) {
         return this.insert(index, new NoDataItem<>(itemController));
@@ -118,6 +138,19 @@ public class ItemList extends ArrayList<BaseItem> {
                               T data,
                               BindableItemController<T, ? extends RecyclerView.ViewHolder> itemController) {
         return addIf(condition, new BindableItem<>(data, itemController));
+    }
+
+    public <T1, T2> ItemList add(T1 firstData,
+                                 T2 secondData,
+                                 DoubleBindableItemController<T1, T2, ? extends RecyclerView.ViewHolder> itemController) {
+        return addItem(new DoubleBindableItem<>(firstData, secondData, itemController));
+    }
+
+    public <T1, T2> ItemList addIf(boolean condition,
+                                   T1 firstData,
+                                   T2 secondData,
+                                   DoubleBindableItemController<T1, T2, ? extends RecyclerView.ViewHolder> itemController) {
+        return addIf(condition, new DoubleBindableItem<>(firstData, secondData, itemController));
     }
 
     public ItemList add(NoDataItemController<? extends RecyclerView.ViewHolder> itemController) {
@@ -227,7 +260,20 @@ public class ItemList extends ArrayList<BaseItem> {
     public <T> ItemList addHeaderIf(boolean condition,
                                     T data,
                                     BindableItemController<T, ? extends RecyclerView.ViewHolder> itemController) {
-        return addHeader(new BindableItem<>(data, itemController));
+        return addHeaderIf(condition, new BindableItem<>(data, itemController));
+    }
+
+    public <T1, T2> ItemList addHeader(T1 firstData,
+                                       T2 secondData,
+                                       DoubleBindableItemController<T1, T2, ? extends RecyclerView.ViewHolder> itemController) {
+        return addHeader(new DoubleBindableItem<>(firstData, secondData, itemController));
+    }
+
+    public <T1, T2> ItemList addHeaderIf(boolean condition,
+                                         T1 firstData,
+                                         T2 secondData,
+                                         DoubleBindableItemController<T1, T2, ? extends RecyclerView.ViewHolder> itemController) {
+        return addHeaderIf(condition, new DoubleBindableItem<>(firstData, secondData, itemController));
     }
 
     public ItemList addHeader(NoDataItemController<? extends RecyclerView.ViewHolder> itemController) {
@@ -258,6 +304,19 @@ public class ItemList extends ArrayList<BaseItem> {
                                     T data,
                                     BindableItemController<T, ? extends RecyclerView.ViewHolder> itemController) {
         return condition ? addFooter(data, itemController) : this;
+    }
+
+    public <T1, T2> ItemList addFooter(T1 firstData,
+                                       T2 secondData,
+                                       DoubleBindableItemController<T1, T2, ? extends RecyclerView.ViewHolder> itemController) {
+        return addFooter(new DoubleBindableItem<>(firstData, secondData, itemController));
+    }
+
+    public <T1, T2> ItemList addFooterIf(boolean condition,
+                                         T1 firstData,
+                                         T2 secondData,
+                                         DoubleBindableItemController<T1, T2, ? extends RecyclerView.ViewHolder> itemController) {
+        return addFooterIf(condition, new DoubleBindableItem<>(firstData, secondData, itemController));
     }
 
     public ItemList addFooter(NoDataItemController<? extends RecyclerView.ViewHolder> itemController) {

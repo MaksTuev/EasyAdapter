@@ -9,7 +9,7 @@ data class Stub(val id: Long = Companion.rnd.nextLong()) {
 }
 
 fun generateStubs(count: Int): List<Stub> {
-    return (0..count-1)
+    return (0..count - 1)
             .map { Stub() }
             .toList()
 }

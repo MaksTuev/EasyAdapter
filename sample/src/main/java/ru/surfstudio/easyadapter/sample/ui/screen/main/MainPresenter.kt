@@ -12,7 +12,7 @@ import javax.inject.Inject
 @PerScreen
 class MainPresenter @Inject constructor() : MvpRxPresenter<MainActivityView>() {
 
-    private val INTERVAL: Long = 4000 //ms
+    private val INTERVAL: Long = 2500 //ms
     private val screenModelFactory = ScreenModelFactory()
     private var screenModel: MainScreenModel = screenModelFactory.next()
 

@@ -5,13 +5,15 @@ import android.support.v7.widget.RecyclerView;
 
 import ru.surfstudio.easyadapter.recycler.holder.BaseViewHolder;
 
-
+/**
+ * ItemAnimator with support custom animations for View Holders, see {@link BaseViewHolder}
+ */
 public class BaseItemAnimator extends DefaultItemAnimator {
 
     @Override
     public final void onRemoveStarting(RecyclerView.ViewHolder item) {
         super.onRemoveStarting(item);
-        if(!(item instanceof BaseViewHolder) || !((BaseViewHolder)item).animateRemove()){
+        if (!(item instanceof BaseViewHolder) || !((BaseViewHolder) item).animateRemove()) {
             onRemoveStartingInternal(item);
         }
     }
@@ -19,7 +21,7 @@ public class BaseItemAnimator extends DefaultItemAnimator {
     @Override
     public final void onAddStarting(RecyclerView.ViewHolder item) {
         super.onAddStarting(item);
-        if(!(item instanceof BaseViewHolder) || !((BaseViewHolder)item).animateInsert()){
+        if (!(item instanceof BaseViewHolder) || !((BaseViewHolder) item).animateInsert()) {
             onAddStartingInternal(item);
         }
     }
@@ -27,7 +29,7 @@ public class BaseItemAnimator extends DefaultItemAnimator {
     @Override
     public final void onChangeStarting(RecyclerView.ViewHolder item, boolean oldItem) {
         super.onChangeStarting(item, oldItem);
-        if(!(item instanceof BaseViewHolder) || !((BaseViewHolder)item).animateChange()){
+        if (!(item instanceof BaseViewHolder) || !((BaseViewHolder) item).animateChange()) {
             onChangeStartingInternal(item);
         }
     }

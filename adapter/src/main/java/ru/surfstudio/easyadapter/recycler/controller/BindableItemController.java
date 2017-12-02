@@ -1,9 +1,18 @@
 package ru.surfstudio.easyadapter.recycler.controller;
 
 
+import ru.surfstudio.easyadapter.recycler.EasyAdapter;
+import ru.surfstudio.easyadapter.recycler.ItemList;
 import ru.surfstudio.easyadapter.recycler.holder.BindableViewHolder;
 import ru.surfstudio.easyadapter.recycler.item.BindableItem;
 
+/**
+ * Controller for item of RecyclerView with one block of data {@link BindableItem}.
+ * It used with {@link EasyAdapter} and {@link ItemList}
+ *
+ * @param <H> type of ViewHolder
+ * @param <T> type of data
+ */
 public abstract class BindableItemController<T, H extends BindableViewHolder<T>>
         extends BaseItemController<H, BindableItem<T, H>> {
 
@@ -26,11 +35,9 @@ public abstract class BindableItemController<T, H extends BindableViewHolder<T>>
         return getItemHash(item.getData());
     }
 
-    public long getItemId(T data){
-        return NO_ID;
-    }
+    protected abstract long getItemId(T data);
 
-    public long getItemHash(T data){
-        return data.hashCode();
+    protected long getItemHash(T data) {
+        return data == null ? 0 : data.hashCode();
     }
 }

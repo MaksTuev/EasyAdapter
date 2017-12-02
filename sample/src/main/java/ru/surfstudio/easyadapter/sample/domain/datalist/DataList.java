@@ -1,4 +1,4 @@
-package ru.surfstudio.easyadapter.sample.domain;
+package ru.surfstudio.easyadapter.sample.domain.datalist;
 
 import android.support.annotation.NonNull;
 import android.util.Log;
@@ -14,6 +14,13 @@ import java.util.Map;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
+/**
+ * list for paginationable data
+ * can merge two blok of data
+ * start page is 1
+ *
+ * @param <T> type of paginationable data
+ */
 public class DataList<T> implements List<T>, Serializable {
 
     public static final int UNSPECIFIED_PAGE = -1;
@@ -57,14 +64,19 @@ public class DataList<T> implements List<T>, Serializable {
     }
 
     public static <T> DataList<T> empty() {
-        return new DataList<>(new ArrayList<T>(), UNSPECIFIED_PAGE, 0, UNSPECIFIED_PAGE_SIZE, 0, 0);
+        return new DataList<>(new ArrayList<T>(),
+                UNSPECIFIED_PAGE,
+                0,
+                UNSPECIFIED_PAGE_SIZE,
+                UNSPECIFIED_TOTAL_ITEMS_COUNT,
+                UNSPECIFIED_TOTAL_PAGES_COUNT);
     }
 
     /**
-     * Слияние двух DataList
+     * Merge this list with new block
      *
-     * @param inputDataList DataList для слияния с текущим
-     * @return текущий экземпляр
+     * @param inputDataList new block
+     * @return this
      */
     public DataList merge(DataList<T> inputDataList) {
         if (this.startPage != UNSPECIFIED_PAGE
@@ -110,9 +122,7 @@ public class DataList<T> implements List<T>, Serializable {
     }
 
     /**
-     * разделяет данные на блоки по страницам
-     *
-     * @return
+     * divide data to blocks
      */
     private Map<Integer, List<T>> split() {
         Map<Integer, List<T>> result = new HashMap<>();
@@ -135,51 +145,43 @@ public class DataList<T> implements List<T>, Serializable {
     }
 
     /**
-     * @return размер одной страницы
+     * @return size of one page
      */
     public int getPageSize() {
         return pageSize;
     }
 
     /**
-     * @return первая страница
+     * @return first page of this data block
      */
     public int getStartPage() {
         return startPage;
     }
 
     /**
-     * @return количество страниц
+     * @return num pages of this data block
      */
     public int getNumPages() {
         return numPages;
     }
 
     /**
-     * возвращает значение offset c которого нужно начать чтобы подгрузить слкдующий блок данных
+     * @return next page
      */
     public int getNextPage() {
         return startPage == UNSPECIFIED_PAGE ? 1 : startPage + numPages;
     }
 
-    /**
-     * @return возможное количество элементов для загружки
-     */
     public int getTotalItemsCount() {
         return totalItemsCount;
     }
 
-    /**
-     * @return возможное количество страниц для загрузки
-     */
     public int getTotalPagesCount() {
         return totalPagesCount;
     }
 
     /**
-     * Проверка возможности дозагрузки данных
-     *
-     * @return
+     * @return true if can load more
      */
     public boolean canGetMore() {
         return startPage == UNSPECIFIED_PAGE

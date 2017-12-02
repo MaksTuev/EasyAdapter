@@ -20,7 +20,10 @@ import ru.surfstudio.easyadapter.sample.ui.screen.main.DaggerPaginationComponent
 import ru.surfstudio.easyadapter.sample.ui.screen.main.list.HeaderController
 import javax.inject.Inject
 
-
+/**
+ * example screen with pagination
+ * Placeholders is list items
+ */
 class PaginationActivityView : MvpActivityView() {
 
     @Inject

@@ -19,6 +19,7 @@ class CarouselElementController(
     inner class Holder(parent: ViewGroup) : BindableViewHolder<Element>(parent, R.layout.carousel_element_item_layout) {
         private lateinit var data: Element
         private val coverView: ElementCoverView
+
         init {
             itemView.setOnClickListener { onClickListener.invoke(data) }
             coverView = itemView.findViewById(R.id.cover_view)

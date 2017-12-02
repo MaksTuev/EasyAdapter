@@ -1,5 +1,6 @@
 package ru.surfstudio.easyadapter.sample.ui.screen.pagination
 
+import com.agna.ferro.mvp.component.scope.PerScreen
 import com.agna.ferro.mvprx.MvpRxPresenter
 import ru.surfstudio.easyadapter.sample.interactor.element.DEFAULT_PAGE
 import ru.surfstudio.easyadapter.sample.interactor.element.ElementRepository
@@ -7,7 +8,7 @@ import rx.Subscription
 import rx.android.schedulers.AndroidSchedulers
 import javax.inject.Inject
 
-
+@PerScreen
 class PaginationPresenter @Inject constructor(
         val elementRepository: ElementRepository
 ) : MvpRxPresenter<PaginationActivityView>() {
@@ -44,7 +45,7 @@ class PaginationPresenter @Inject constructor(
                 { _ ->
                     screenModel.setErrorLoadState()
                     screenModel.setErrorPaginationState()
-                    view.showText("Load data error")
+                    view.showText("Imitate load data error")
                     view.render(screenModel)
                 })
     }
@@ -62,7 +63,7 @@ class PaginationPresenter @Inject constructor(
                 },
                 { _ ->
                     screenModel.setErrorPaginationState()
-                    view.showText("Pagination request error")
+                    view.showText("Imitate pagination request error")
                     view.render(screenModel)
                 })
     }

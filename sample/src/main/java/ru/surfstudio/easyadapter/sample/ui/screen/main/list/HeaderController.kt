@@ -10,6 +10,5 @@ class HeaderController : NoDataItemController<HeaderController.Holder>() {
 
     override fun createViewHolder(parent: ViewGroup?): Holder = Holder(parent)
 
-
     inner class Holder(parent: ViewGroup?) : BaseViewHolder(parent, R.layout.header_item_layout)
 }

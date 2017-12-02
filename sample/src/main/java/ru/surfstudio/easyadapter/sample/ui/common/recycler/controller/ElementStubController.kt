@@ -8,7 +8,7 @@ import ru.surfstudio.easyadapter.sample.ui.common.stub.Stub
 import ru.surfstudio.easyadapter.sample.ui.common.stub.toStub
 
 
-class ElementStubController() : BindableItemController<Stub, ElementStubController.Holder>() {
+class ElementStubController : BindableItemController<Stub, ElementStubController.Holder>() {
 
     override fun createViewHolder(parent: ViewGroup): Holder = Holder(parent)
 

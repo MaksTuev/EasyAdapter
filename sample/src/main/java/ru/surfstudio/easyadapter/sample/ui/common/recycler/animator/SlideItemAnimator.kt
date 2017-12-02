@@ -22,7 +22,7 @@ class SlideItemAnimator : StandardItemAnimator() {
         val yAnim = TranslateAnimation(
                 Animation.RELATIVE_TO_SELF, 0f,
                 Animation.RELATIVE_TO_SELF, 0f,
-                Animation.RELATIVE_TO_SELF, 1/8f,
+                Animation.RELATIVE_TO_SELF, 1 / 8f,
                 Animation.RELATIVE_TO_SELF, 0f)
         val alphaAnim = AlphaAnimation(0f, 1f)
         val animSet = AnimationSet(false)
