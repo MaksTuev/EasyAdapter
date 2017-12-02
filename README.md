@@ -93,6 +93,23 @@ fun render(screenModel: PaginationScreenModel) {
     adapter.setItems(itemList, screenModel.paginationState)
 }
 ```
+Code in presenter for pagination:
+```kotlin
+fun loadMore() {
+    loadMoreSubscription = subscribe(
+            elementRepository.getElements(screenModel.elements.nextPage)
+                    .observeOn(AndroidSchedulers.mainThread()),
+            { elements ->
+                screenModel.elements.merge(elements) //merge old data with new block
+                screenModel.setNormalPaginationState()
+                view.render(screenModel)
+            },
+            { _ ->
+                screenModel.setErrorPaginationState()
+                view.render(screenModel)
+            })
+}
+```
 
 ## License
 ```
