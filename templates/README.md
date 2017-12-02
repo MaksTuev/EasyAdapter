@@ -1,5 +1,5 @@
 # Code template of ItemController for Android Studio
-Copy folder "surf" with template to android_studio_folder/plugins/android/lib/templates  
+Copy folder "surf" with template to android_studio_folder/plugins/android/lib/templates and restart Android Studio
 
 Template works in Android Studio 3.0.1 and higher. Java and Kotlin languages are supported.
 
