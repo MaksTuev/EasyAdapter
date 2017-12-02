@@ -77,7 +77,7 @@ class ElementController(
 ![Example1](pagination.gif)
 
 
-Placeholders is also element of RecyclerView
+Placeholders is also elements of RecyclerView
 
 Code in activity:
 ```kotlin
