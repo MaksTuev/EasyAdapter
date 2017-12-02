@@ -1,7 +1,7 @@
 # EasyAdapter
 This project demonstrates simple approach for implementation complex lists, based on RecyclerView.
 
-You don't need call methods notify...(), beсause it is called automatically when you set data. It also work with mutable data objects, unlike `android.support.v7.util.DiffUtil`. You also don't need extend RecyclerView.Adapter. 
+You don't need call methods notify...(), beсause it is called automatically when you set data. It also works with mutable data objects, unlike `android.support.v7.util.DiffUtil`. You also don't need extend RecyclerView.Adapter. 
 
 You need only create ItemController for each type of list items and describe order of elemets in Activity/Fragment.
 ItemController incapsulates all interactions with list item, so it is very easy for reading, modifying and reusing.
