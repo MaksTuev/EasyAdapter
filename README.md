@@ -1,7 +1,8 @@
 # EasyAdapter
 There is demonstration of simple approach for implementation difficult lists, based on RecyclerView.
 
-You do need call method notify... and extend RecyclerView.Adapter. You need only create ItemController for each type of elemets in list and describe order of elemets in Activity/Fragment.
+You do need call method notify... and extend RecyclerView.Adapter. 
+You need only create ItemController for each type of elemets in list and describe order of elemets in Activity/Fragment.
 
 ## Example 1 - Six type of elemets:
 ![Example1](main.gif)
