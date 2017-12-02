@@ -4,7 +4,9 @@ Copy folder "surf" with templates to <android-studio-foler>/plugins/android/lib/
 Templates works in Android Studio 3.0.1 and higher.
 
 For using template press Ctrl + Shift + A and type "ItemController".
-![using](teplate_using.png)
+
+![using](https://raw.githubusercontent.com/MaksTuev/EasyAdapter/master/templates/template_using.png)
+
 Result:
 ```kotlin
 class ElementItemController(
