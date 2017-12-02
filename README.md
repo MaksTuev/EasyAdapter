@@ -1,9 +1,10 @@
 # EasyAdapter
-There is demonstration of simple approach for implementation difficult lists, based on RecyclerView.
+This project demonstrates of simple approach for implementation complex lists, based on RecycserView.
 
-You do need call method notify... and extend RecyclerView.Adapter. 
+You don't need call methods notify...(), beсause it is called automatically when you set data. You also don't need extend RecyclerView.Adapter. 
 
-You need only create ItemController for each type of elemets in list and describe order of elemets in Activity/Fragment.
+You need only create ItemController for each type of list items and describe order of elemets in Activity/Fragment.
+ItemController incapsulates all interactions with list item, so it is very easy for reading, modifying and reusing.
 
 A big thanks to ![Surf](http://surfstudio.co/) developers, especially to ![Fedor Atyakshin](https://github.com/revers-back) , for their help in developing.
 
