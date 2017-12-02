@@ -8,6 +8,26 @@ You do need call method notify... and extend RecyclerView.Adapter. You need only
 
 Code in activity:
 ```kotlin
+ private fun initList() {
+    val linearLayoutManager = LinearLayoutManager(this)
+    val itemAnimator = SlideItemAnimator()
+    recycler.itemAnimator = itemAnimator
+    recycler.layoutManager = linearLayoutManager
+    recycler.adapter = adapter
+
+    headerController = HeaderController()
+    carouselController = CarouselController(
+            onElementClickListener = { openPaginationScreen() },
+            onShowAllClickListener = { openPaginationScreen() })
+    deliveryController = DeliveryController(
+            onClickListener =  { openPaginationScreen() })
+    commercialController = CommercialController(
+            onClickListener =  { openPaginationScreen() })
+    elementController = ElementController(
+            onClickListener = { openPaginationScreen() })
+    emptyStateController = EmptyStateController()
+}
+
 fun render(screenModel: MainScreenModel) {
     val itemList = ItemList.create()
             .addIf(screenModel.hasHeader(), headerController)
