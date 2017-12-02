@@ -6,6 +6,8 @@ You don't need call methods notify...(), beсause it is called automatically whe
 You need only create ItemController for each type of list items and describe order of elemets in Activity/Fragment.
 ItemController incapsulates all interactions with list item, so it is very easy for reading, modifying and reusing.
 
+Project contains ![template](https://github.com/MaksTuev/EasyAdapter/tree/master/templates) of ItemController for Android Studio. 
+
 A big thanks to ![Surf](http://surfstudio.co/) developers, especially to ![Fedor Atyakshin](https://github.com/revers-back) , for their help in developing.
 
 ## Example 1 - Six types of elements:
