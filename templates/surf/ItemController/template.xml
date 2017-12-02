@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<template
+    format="1"
+    revision="1"
+    name="ItemController"
+    description="Creating ItemController for EasyAdapter ">
+
+    <category value="Surf" />
+    <formfactor value="ItemController" />
+
+    <parameter
+        id="nameController"
+        name="Controller name without postfix"
+        type="string"
+        constraints="class|nonempty"
+        default=""
+        help="Controller name without postfix ItemController"/>
+    
+    <parameter
+        id="typeController"
+        name="Controller type"
+        type="enum"
+        default="1">
+        <option id="1" >Bindable</option>
+        <option id="2" >NoData</option>
+    </parameter>
+
+    <parameter
+        id="nameTypeData"
+        name="Type of data for Conroller"
+        type="string"
+        constraints="class|nonempty"
+        default=""
+        help="Type of data for Conroller"
+        visibility="typeController='1'"/>
+
+    <parameter
+        id="hasListener"
+        name="Add listener"
+        type="boolean"
+        default="true"
+        help="create onClickListener"/>
+
+    <parameter
+        id="generateLayout"
+        name="Add xml layout"
+        type="boolean"
+        default="true"
+        help="create xml layout"/>
+
+    <parameter
+        id="nameRes"
+        name="Layout file name"
+        type="string"
+        suggest="${classToResource(nameController)}_layout"
+        constraints="layout|unique"
+        visibility="generateLayout"
+        help="" />
+    
+
+    <globals file="globals.xml.ftl" />
+    <execute file="recipe.xml.ftl" />
+     
+
+</template>
