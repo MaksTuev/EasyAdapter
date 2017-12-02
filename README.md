@@ -42,6 +42,7 @@ fun render(screenModel: MainScreenModel) {
             .addIf(screenModel.hasBottomCarousel(), screenModel.bottomCarousel, carouselController)
             .addIf(screenModel.isEmpty(), emptyStateController)
     adapter.setItems(itemList)
+    //You don't need call notify...() methods and override getItemViewType(), onBindViewHolder(), etc. inside Adapter  
 }
 ```
 
