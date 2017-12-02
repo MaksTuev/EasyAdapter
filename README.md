@@ -1,5 +1,5 @@
 # EasyAdapter
-This project demonstrates of simple approach for implementation complex lists, based on RecycserView.
+This project demonstrates of simple approach for implementation complex lists, based on RecyclerView.
 
 You don't need call methods notify...(), beсause it is called automatically when you set data. You also don't need extend RecyclerView.Adapter. 
 
