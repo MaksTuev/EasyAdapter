@@ -1,4 +1,6 @@
 # EasyAdapter
+[![Android Arsenal]( https://img.shields.io/badge/Android%20Arsenal-EasyAdapter-green.svg?style=flat )]( https://android-arsenal.com/details/1/6522 )
+
 This project demonstrates simple approach for implementation complex lists, based on RecyclerView.
 
 You don't need call methods notify...(), beсause it is called automatically when you set data. It also works with mutable data objects, unlike `android.support.v7.util.DiffUtil`. You also don't need extend RecyclerView.Adapter. 
