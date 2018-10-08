@@ -1,6 +1,6 @@
-#### ** THIS REPO IS SAMPLE AND IS NO ACTIVELY MAINTAINED **
+#### THIS REPO IS SAMPLE AND IS NO ACTIVELY MAINTAINED
 
-This project evolved into module `easyadapter` from [Surf Android Standard](https://bitbucket.org/surfstudio/android-standard/) repository (Documentation in Russian). It contains modules, which is used for developing Android projects by mobile studio [Surf](http://surfstudio.ru/).
+This project evolved into module `easyadapter` from [Surf Android Standard](https://github.com/surfstudio/SurfAndroidStandard/) repository (Documentation in Russian). It contains modules, which is used for developing Android projects by mobile studio [Surf](http://surfstudio.ru/).
 
 # EasyAdapter
 [![Android Arsenal]( https://img.shields.io/badge/Android%20Arsenal-EasyAdapter-green.svg?style=flat )]( https://android-arsenal.com/details/1/6522 )
