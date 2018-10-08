@@ -1,4 +1,4 @@
-#### THIS REPO IS SAMPLE AND IS NO ACTIVELY MAINTAINED
+#### ** THIS REPO IS SAMPLE AND IS NO ACTIVELY MAINTAINED **
 
 This project evolved into module `easyadapter` from [Surf Android Standard](https://github.com/surfstudio/SurfAndroidStandard/) repository (Documentation in Russian). It contains modules, which is used for developing Android projects by mobile studio [Surf](http://surfstudio.ru/).
 
